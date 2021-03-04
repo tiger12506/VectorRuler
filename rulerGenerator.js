@@ -31,11 +31,10 @@ var limitTickQty = function(){
 }
 
 var checkUnit = function(){
-    var pixelsPerInch = 72//I don't think this needs to be in the object....
-    var pixelsPerCM  =  pixelsPerInch / ruler.cmPerInch
+    var pixelsPerCM  =  ruler.pixelsPerInch / ruler.cmPerInch
 
     if (ruler.units === "inches"){
-        ruler.pixelsPerUnit = pixelsPerInch
+        ruler.pixelsPerUnit = ruler.pixelsPerInch
         ruler.unitsAbbr= "\"in."
     }
     else if (ruler.units === "centimeters"){
@@ -193,8 +192,9 @@ var updateVariables = function(){
     ruler.units =  $("input:radio[name=rulerUnits]:checked'").val();
     ruler.subUnitBase = $("input:radio[name=subUnits]:checked'").val();
     ruler.redundant =  $("input:checkbox[name=redundant]:checked'").val();
-    ruler.width = $('#rulerWidth').val() ;
-    ruler.height = $('#rulerHeight').val() ;
+    ruler.width = $('#rulerWidth').val();
+    ruler.height = $('#rulerHeight').val();
+    ruler.pixelsPerInch = $('#rulerPPI').val();
     ruler.subUnitExponent = $('#subUnitExponent').val() ;
     ruler.levelToLevelMultiplier = $('#levelToLevelMultiplier').val();
     ruler.cmPerInch = 2.54
